@@ -1,0 +1,29 @@
+<div crud-breadcrumbs="{{ctrl.star.id ? 'edit' : 'create'}}"></div>
+<h2>
+    <span ng-hide="ctrl.star.id">Create Star</span>
+    <span ng-show="ctrl.star.id">Edit Star</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+   <!-- INSERTFIELDCONTAINERHERE -->	
+<div field-container label='name' invalid='form.name.$invalid'>
+               <input name='name' type='text' class='form-control' ng-model='ctrl.star.name' required  />
+</div>
+<div field-container label='constellation' invalid='form.constellation.$invalid'>
+               <input name='constellation' type='text' class='form-control' ng-model='ctrl.star.constellation' required  />
+</div>
+<div field-container label='bd' invalid='form.bd.$invalid'>
+               <input name='bd' type='text' class='form-control' ng-model='ctrl.star.bd' required  />
+</div>
+<div field-container label='distance' invalid='form.distance.$invalid'>
+               <input name='distance' type='text' class='form-control' ng-model='ctrl.star.distance' required  />
+</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.star" is-disabled="form.$invalid"></button>
+        <span ng-if="ctrl.star.id"><button crud-button="delete" item="ctrl.star"></button></span>
+    </div>
+
+</form>

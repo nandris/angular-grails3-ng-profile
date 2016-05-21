@@ -1,0 +1,72 @@
+<div class="clearfix">
+	<h2 class="pull-left">Star List</h2>
+	<div class="pull-right"><button crud-button="create" ></button></div>
+</div>
+<div flash-message ></div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-filter"></i> Filter List</h3>
+  </div>
+  <div class="panel-body">
+<div class="row">
+<form class="form">
+   <!-- BEGIN FILTER FORM -->
+   <!-- INSERTFILTERFORMAFTER -->
+<div class='form-group col-md-3'>
+		   <label for='filter.name'>name</label>
+		   <input type='text' class='form-control' ng-model='ctrl.filter.name' ng-model-options="{ debounce: 300 }"/>
+         </div>
+         <!-- STOPINSERT1 -->
+<div class='form-group col-md-3'>
+		   <label for='filter.name'>constellation</label>
+		   <input type='text' class='form-control' ng-model='ctrl.filter.constellation' ng-model-options="{ debounce: 300 }"/>
+         </div>
+         <!-- STOPINSERT1 -->
+<div class='form-group col-md-3'>
+		   <label for='filter.name'>bd</label>
+		   <input type='text' class='form-control' ng-model='ctrl.filter.bd' ng-model-options="{ debounce: 300 }"/>
+         </div>
+         <!-- STOPINSERT1 -->
+<div class='form-group col-md-3'>
+		   <label for='filter.name'>distance</label>
+		   <input type='text' class='form-control' ng-model='ctrl.filter.distance' ng-model-options="{ debounce: 300 }"/>
+         </div>
+         <!-- STOPINSERT1 -->
+   <!-- END FILTER FORM -->
+</form>
+</div>
+  </div>
+</div>
+
+<table id="list" class="table table-striped table-bordered table-hover">
+
+    <thead sort-header ng-model="ctrl.sort" on-sort="ctrl.reload()">
+      <!-- BEGIN FILTER COLUMNS -->
+      <th sortable-column myref="INSERTFILTERCOLUMNAFTER" title="Id" property="id"></th>
+<th sortable-column title='name' property='name'></th>
+<th sortable-column title='constellation' property='constellation'></th>
+<th sortable-column title='bd' property='bd'></th>
+<th sortable-column title='distance' property='distance'></th>
+      <th>&nbsp;</th>
+      <!-- END FILTER COLUMNS -->
+    </thead>
+
+    <tbody>
+      <!-- BEGIN TABLE DATA -->
+      <tr class="animate-repeat" ng-repeat="item in ctrl.starList">
+         <td myref2="INSERTTABLEDATAAFTER"><a href="#/star/show/{{item.id}}">{{item.id}}</a></td>
+<td>{{ item.name }}</td>
+<td>{{ item.constellation }}</td>
+<td>{{ item.bd }}</td>
+<td>{{ item.distance }}</td>
+      <!-- END TABLE DATA -->
+         <td>
+            <button crud-button="edit" item="item" ></button>
+            <button crud-button="delete" item="item" after-action="ctrl.reload()" ></button>
+         </td>
+      </tr>
+    </tbody>
+</table>
+
+<div pagination total-items="ctrl.starList.getTotalCount()" items-per-page="ctrl.pageSize" ng-model="ctrl.page" ng-change="ctrl.load()"></div>

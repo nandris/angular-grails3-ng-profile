@@ -1,0 +1,16 @@
+<div crud-breadcrumbs="show"></div>
+<h2>Show Star</h2>
+<div flash-message ></div>
+
+<table class="table table-bordered table-striped">
+    <!-- INSERTPOINT -->
+<tr display-field label='name' value='ctrl.star.name'></tr>
+<tr display-field label='constellation' value='ctrl.star.constellation'></tr>
+<tr display-field label='bd' value='ctrl.star.bd'></tr>
+<tr display-field label='distance' value='ctrl.star.distance'></tr>
+</table>
+
+<div class="form-actions">
+    <button crud-button="edit" item="ctrl.star"></button>
+    <button crud-button="delete" item="ctrl.star" ></button>
+</div>

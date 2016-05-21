@@ -1,0 +1,22 @@
+<div id="mainview2">
+<div crud-breadcrumbs="{{ctrl.angdemo.id ? 'edit' : 'create'}}"></div>
+<h2>
+    <span ng-hide="ctrl.angdemo.id">Create Angdemo</span>
+    <span ng-show="ctrl.angdemo.id">Edit Angdemo</span>
+</h2>
+
+<div flash-message ></div>
+
+<form name="form" class="form-horizontal" role="form" novalidate> 
+   <!-- INSERTFIELDCONTAINERHERE -->	
+<div field-container label='anotherfield' invalid='form.anotherfield.$invalid'>
+               <input name='anotherfield' type='text' class='form-control' ng-model='ctrl.angdemo.anotherfield' required  />
+</div>
+
+    <div>
+        <button crud-button="save" item="ctrl.angdemo" is-disabled="form.$invalid"></button>
+        <span ng-if="ctrl.angdemo.id"><button crud-button="delete" item="ctrl.angdemo"></button></span>
+    </div>
+
+</form>
+</div>
